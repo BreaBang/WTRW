@@ -50,20 +50,17 @@ module.exports = {
     }
   },
 // @desc Proess add form 
-// @route POST/stories
-  createEntry: async (req, res) => {
-    try {
-        await Entry.create({
-          title: req.body.title,
-          body: req.params.body,
-          user: req.user.id,
-        });
-      res.redirect('/dashboard') //once we submit a story, it will send us back to the dashboard.
-      console.log("Post has been added!");
-    } catch (err) {
-      console.error(err)
-      res.render('error/500')
-  }},
+// @route POST/entries
+createEntry: async (req, res) => {
+  try {
+    console.log(req.body)
+    await Entry.create({ creator: req.user.userName })
+    console.log('Entry has been added')
+    res.redirect('/dashboard')
+  } catch (err) {
+    console.log(err)
+  }
+},
   likePost: async (req, res) => {
     try {
       await Entry.findOneAndUpdate(

@@ -56,10 +56,8 @@ app.use(flash());
 
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
-app.post("/", entriesRoutes);
-app.use("/add", entriesRoutes);
+app.use("/entries", entriesRoutes);
 app.use("/comment", commentRoutes);
-//app.use('/stories', require('./routes/stories'))
 
 //Server Running
 app.listen(process.env.PORT, () => {

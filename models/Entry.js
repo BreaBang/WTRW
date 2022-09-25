@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 //the information that we'll get back about users for their profile from google using google auth for logins.
-const StorySchema = new mongoose.Schema({
+const EntrySchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        //required: true
     },
     body: {
         type: String,
-        required: true
+        //required: true
     },
     status: {
         type: String,
@@ -18,7 +18,7 @@ const StorySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId, //connecting each user's story to the database object associated with that user. 
         ref: 'User',//ref back to user model
-        required: true,  // to make sure the app pairs every story with a user to keep the app from breaking
+        //required: true,  // to make sure the app pairs every story with a user to keep the app from breaking
     },
     
     createdAt: {
@@ -28,4 +28,4 @@ const StorySchema = new mongoose.Schema({
 })
 
 /* Passing in a new model for story */
-module.exports = mongoose.model('Story', StorySchema)
+module.exports = mongoose.model('Entry', EntrySchema)
