@@ -16,14 +16,16 @@ const EntrySchema = new mongoose.Schema({
         enum: ['public', 'private']
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId, //connecting each user's story to the database object associated with that user. 
-        ref: 'User',//ref back to user model
-        //required: true,  // to make sure the app pairs every story with a user to keep the app from breaking
+        type: mongoose.Schema.Types.ObjectId,  
+        ref: 'User',
     },
-    
+    userName: {
+        type: String,  
+        ref: 'User',
+    },
     createdAt: {
         type: Date,
-        default: Date.now //Default will assign a value if none is provided. So it will assign now as the default if none is provided. 
+        default: Date.now  
     }
 })
 

@@ -57,3 +57,9 @@ nav{
     width: 100%;
     margin-bottom: 10px;
 }
+p {
+    color: black;
+}
+a {
+    text-decoration: none;
+}
