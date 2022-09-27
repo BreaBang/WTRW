@@ -4,16 +4,20 @@
 <h4>Welcome <%= user.userName %></p></h4>
 <p>Here are your journal entries:</p>
 <!--If stories add here -->
-<table>
+<table class="table">
+  <thead>
     <tr>
-      <th class= 'menuBar'>Title</th>
-      <th class= 'menuBar'>Entry Date</th>
+      <th scope="col">Date</th>
+      <th scope="col">Title</th>
+      <th scope="col">Status</th>
     </tr>
+  </thead>
     <tbody>
     <% entries.forEach(el => { %>
       <tr class='entries' data-name='<%=el.user%>' data-id='<%=el._id%>'>
-        <td><span><%=el.title %> </span></td>
         <td><span><%=el.createdAt %></span></td>
+        <td><span><%=el.title %> </span></td>
+        <td><span><%=el.status %> </span></td>
       </tr>
     <% }) %>
     </tbody>

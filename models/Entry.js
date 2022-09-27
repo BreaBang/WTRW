@@ -8,6 +8,7 @@ const EntrySchema = new mongoose.Schema({
     },
     body: {
         type: String,
+        $substr: ["$body", 0, 50]
         //required: true
     },
     status: {
