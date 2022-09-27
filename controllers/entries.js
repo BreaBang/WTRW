@@ -11,13 +11,13 @@ const Entry = require('../models/Entry') //adding the story model
 module.exports = {
 getCommunity: async (req, res) => {
     try{
-      const entries = await Entry.find({ status: 'public' }) // to show all public stories we have to find the ones with the STATUS public
+      const entry = await Entry.find({ status: 'public' }) // to show all public stories we have to find the ones with the STATUS public
           .populate('entry') // grabbing from the user model to fill in the card
           .sort({ createdAt: 'desc'}) // ability to sort the cards so they are in order of creation date from newest to oldest. 
           .lean() // lean takes it from a mongoose object and turns it into a plain json object so handlebars can use it. 
 
           res.render('community', { 
-              entries: entries, body: req.body, userName: req.user.userName
+              entry: entry, body: req.body, userName: req.user.userName
           }
           )
   } catch (err) {
@@ -47,8 +47,8 @@ getCommunity: async (req, res) => {
   getEntry: async (req, res) => {
     try {
       const entry = await Entry.findById(req.params.id);
-      const comments = await Comments.find({entry: req.params.id}).sort({ createdAt: "asc" }).lean();
-      res.render("community.ejs", { entry: entry, userName: req.user });
+      //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
+      res.render("entry.ejs", { entry: entry, user: req.user});
     } catch (err) {
       console.log(err);
     }

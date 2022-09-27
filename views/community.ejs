@@ -2,15 +2,15 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <ul class="row list-unstyled">
-      <% for(var i=0; i<entries.length; i++) {%>
+      <% for(var i=0; i<entry.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <a href="/Entry/<%= entries[i]._id%>">
-              <h5 class="card-title"><%= entries[i].title%></h4>
-              <span class="card-text"><%= entries[i].userName%></span>
-              <p class="card-text"><%= entries[i].body.substring(0, 75)+"..."%></p>
-              <a href="#" class="btn btn-primary">Read More</a>
+              <a href="/entry/<%= entry[i]._id%>">
+              <h5 class="card-title"><%= entry[i].title%></h4>
+              <span class="card-text"><%= entry[i].userName%></span>
+              <p class="card-text"><%= entry[i].body.substring(0, 75)+"..."%></p>
+              <a href="/entry/<%= entry[i]._id%>" class="btn btn-primary">Read More</a>
             </div>
           </div>
           </a>

@@ -1,0 +1,37 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+       <!-- Entry Section -->
+       <section class="entry-group">
+      <h2><%= entry.title %></h2>
+      <p><%= entry.body %></p>
+      </section>
+      <div class="row justify-content-between">
+      
+      <!-- Delete Post -->
+        <%if(entry.user == user.id){ %>
+        <form
+          action="/post/deleteEntry/<%= entry.id %>?_method=DELETE"
+          method="POST"
+          class="col-3"
+        ><div class="likes">
+          <button class="btn btn-dark fa fa-trash" type="submit"></button>
+        </form>
+        <%}%>
+      </div>
+      </div>
+    </div>
+   <!-- Caption-->
+   
+    
+     
+     <!-- Return Navigation -->
+    <div class="col-6 mt-5">
+      <a class="btn btn-dark" href="/profile">Return to Profile</a>
+      <a class="btn btn-dark" href="/feed">Return to Feed</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
