@@ -1,5 +1,5 @@
 # TBD
-S
+
 # Tech Used
 This app was created using Javascript, EJS, Bootstrap, Node.js, Express.js, Passport, and BCRPYT. 
 
