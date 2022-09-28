@@ -10,14 +10,24 @@
       <th scope="col">Date</th>
       <th scope="col">Title</th>
       <th scope="col">Status</th>
+      <th scope="col"><span class="fa fa-trash"></span></th>
     </tr>
   </thead>
     <tbody>
     <% entries.forEach(el => { %>
       <tr class='entries' data-name='<%=el.user%>' data-id='<%=el._id%>'>
-        <td><span><%=el.createdAt %></span></td>
-        <td><span><%=el.title %> </span></td>
+        <td><span><%=el.createdAt.toDateString() %></span></td>
+        <td><span> <a href="/entries/<%= el._id%>"><%=el.title %> </a></span></a></td>
         <td><span><%=el.status %> </span></td>
+        <td><span> 
+          <form
+            action="/entries/deleteEntry/<%= el._id%>?_method=DELETE"
+            method="POST"
+            class="col-3"
+          ><div class="likes">
+            <button class="btn btn-dark fa fa-trash" type="submit"></button>
+          </form>
+          </span></td>
       </tr>
     <% }) %>
     </tbody>
