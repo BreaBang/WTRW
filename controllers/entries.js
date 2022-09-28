@@ -1,4 +1,3 @@
-const cloudinary = require("../middleware/cloudinary");
 const Comments = require("../models/Comments");
 const express = require('express')
 const router = express.Router()
@@ -91,8 +90,6 @@ createEntry: async (req, res) => {
     try {
       // Find post by id
       let entry = await Entry.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.cloudinaryId);
       // Delete post from db
       await Entry.remove({ _id: req.params.id });
       console.log("Deleted Entry");
