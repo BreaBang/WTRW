@@ -25,11 +25,20 @@ getCommunity: async (req, res) => {
 
   }
 },
+getEntry: async (req, res) => {
+  try {
+    const entry = await Entry.findById(req.params.id);
+    //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
+    res.render("entry", { entry: entry, user: req.user });
+  } catch (err) {
+    console.log(err);
+  }
+},
   getDashboard: async (req, res) => {
     try {
       const entries = await Entry.find({user: req.user.id});
 
-      res.render("dashboard.ejs", { entries: entries, user: req.user });
+      res.render("dashboard", { entries: entries, user: req.user });
   } catch (err){
       console.error(err)
       res.render('error/500')
@@ -43,15 +52,7 @@ getCommunity: async (req, res) => {
       console.log(err);
     }
   },
-  getEntry: async (req, res) => {
-    try {
-      const entry = await Entry.findById(req.params.id);
-      //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
-      res.render("entry.ejs", { entry: entry, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+ 
 // @desc Proess add form 
 // @route POST/entries
 createEntry: async (req, res) => {
