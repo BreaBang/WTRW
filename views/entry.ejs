@@ -1,18 +1,19 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row justify-content-center mt-5">
+  <div class="row mt-5">
     <div class="col-6">
        <!-- Entry Section -->
        <section class="entry-group">
       <h2><%= entry.title %></h2>
+      <h4><%= entry.userName %></h4>
       <p><%= entry.body %></p>
       </section>
-      <div class="row justify-content-between">
+      <div class="row">
       
       <!-- Delete Post -->
         <%if(entry.user == user.id){ %>
         <form
-          action="/post/deleteEntry/<%= entry.id %>?_method=DELETE"
+          action="/entries/deleteEntry/<%= entry._id%>?_method=DELETE"
           method="POST"
           class="col-3"
         ><div class="likes">
@@ -28,8 +29,8 @@
      
      <!-- Return Navigation -->
     <div class="col-6 mt-5">
-      <a class="btn btn-dark" href="/profile">Return to Profile</a>
-      <a class="btn btn-dark" href="/feed">Return to Feed</a>
+      <a class="btn btn-dark" href="/dashboard">Return to Profile</a>
+      <a class="btn btn-dark" href="/community">Return to Community</a>
     </div>
   </div>
 </div>

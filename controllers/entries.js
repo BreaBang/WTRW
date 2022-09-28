@@ -52,9 +52,6 @@ getEntry: async (req, res) => {
       console.log(err);
     }
   },
- 
-// @desc Proess add form 
-// @route POST/entries
 createEntry: async (req, res) => {
   try {
     await Entry.create({

@@ -4,9 +4,8 @@
     <ul class="row list-unstyled">
       <% for(var i=0; i<entries.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem; height: 16rem;">
             <div class="card-body">
-              <a href="/entry/<%= entries[i]._id%>">
               <h5 class="card-title"><%= entries[i].title%></h4>
               <span class="card-text"><%= entries[i].userName%></span>
               <p class="card-text"><%= entries[i].body.substring(0, 75)+"..."%></p>
