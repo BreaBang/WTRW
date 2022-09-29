@@ -7,6 +7,10 @@ const Entry = require("../models/Entry");
 //Entries Routes - simplified for now
 router.get("/:id", ensureAuth, entriesController.getEntry);
 
+router.get("editEntry/:id", ensureAuth, entriesController.getEditPage)
+
+router.put("/:id", entriesController.updateEntry);
+
 router.get("/", ensureAuth, entriesController.getCommunity);
 
 router.get('/user/:userId', ensureAuth, entriesController.getDashboard)

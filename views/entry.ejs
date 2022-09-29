@@ -4,23 +4,26 @@
     <div class="col-6">
        <!-- Entry Section -->
        <section class="entry-group">
-      <h2><%= entry.title %></h2>
-      <h4><%= entry.userName %></h4>
-      <p><%= entry.body %></p>
+      <h2><%= entries.title %></h2>
+      <h4><%= entries.userName %></h4>
+      <p><%= entries.body %></p>
       </section>
       <div class="row">
       
       <!-- Delete Post -->
-        <%if(entry.user == user.id){ %>
+        <%if(entries.user == user.id){ %>
         <form
-          action="/entries/deleteEntry/<%= entry._id%>?_method=DELETE"
+          action="/entries/deleteEntry/<%= entries._id%>?_method=DELETE"
           method="POST"
           class="col-3"
-        ><div class="likes">
+        ><div>
           <button class="btn btn-dark fa fa-trash" type="submit"></button>
         </form>
-        <%}%>
+        <% } %>
       </div>
+      <%if(entries.user == user.id){ %>
+      <a class="btn btn-dark" href="/edit/<%= entries._id%>">Edit</a>
+      <% } %>
       </div>
     </div>
    <!-- Caption-->
