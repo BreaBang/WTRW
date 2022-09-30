@@ -5,19 +5,12 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const Entry = require("../models/Entry");
 
 //Entries Routes - simplified for now
-router.get("/dashboard", ensureAuth, entriesController.getDashboard);
-
-router.get("/community", ensureAuth, entriesController.getCommunity);
-
-router.get("/add", ensureAuth, entriesController.getAddPage);
 
 router.post("/add", ensureAuth, entriesController.createEntry);
 
 router.get("/:id", ensureAuth, entriesController.getEntry);
 
-router.get('/', ensureAuth, entriesController.getEditPage)
-
-//router.put("/:id", entriesController.updateEntry);
+router.put("/:id", entriesController.updateEntry);
 
 router.put("/likeEntry/:id", entriesController.likeEntry);
 

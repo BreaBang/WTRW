@@ -71,9 +71,11 @@ createEntry: async (req, res) => {
 },
 getEditPage: async (req, res) => {
   try {
-    res.render("edit.ejs");
-  } catch (err){
-    console.log(err);
+    const entries = await Entry.findById(req.params.id);
+    //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
+    res.render("edit", { entries: entries, user: req.user });
+  } catch (err) {
+    console.log(err); 
   }
 },
 updateEntry: async (req, res) => {
