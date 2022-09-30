@@ -71,11 +71,9 @@ createEntry: async (req, res) => {
 },
 getEditPage: async (req, res) => {
   try {
-    const entry = await Entry.findById(req.params.id);
-    //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
-    res.render("/edit", { entry: entry });
-  } catch (err) {
-    console.log(err); 
+    res.render("edit.ejs");
+  } catch (err){
+    console.log(err);
   }
 },
 updateEntry: async (req, res) => {
@@ -87,7 +85,7 @@ updateEntry: async (req, res) => {
       }
       // Check Owner of the Story - should be logged in user's ID. If not it will redirect. 
       if (entry.user != req.user.id) {
-        res.redirect('/stories') 
+        res.redirect('/dashboard') 
     } else { // If it passess the checks, we're using another mongoose method to find the one story and to perform an update operation on it. 
           entry = await Entry.findOneAndUpdate({_id: req.params.id}, req.body, { //Finding the story by the id and replacing the content of the body with the request.
             new: true,  // For some reason if we try to update a story that doesn't exist it will create a new one.
