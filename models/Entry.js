@@ -4,16 +4,24 @@ const mongoose = require('mongoose')
 const EntrySchema = new mongoose.Schema({
     title: {
         type: String,
-        //required: true
+    },
+    goal: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Goal'
     },
     body: {
         type: String,
-        $substr: ["$body", 0, 50]
-        //required: true
+        $substr: ["$body", 0, 50],
+    },
+    thoughts: {
+        type: String,
+    },
+    emotions: {
+        type: String,
     },
     status: {
         type: String,
-        defualt: 'public',
+        default: 'public',
         enum: ['public', 'private']
     },
     user: {
@@ -27,8 +35,12 @@ const EntrySchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now  
-    }
-})
+    },
+    comment: {
+        type: mongoose.Schema.Types.ObjectId,  
+        ref: 'Comment',
+    },
+    })
 
 /* Passing in a new model for story */
 module.exports = mongoose.model('Entry', EntrySchema)

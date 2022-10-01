@@ -1,0 +1,69 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-6">
+       <!-- Entry Section -->
+       <section class="entry-group">
+      <h2><%= entry.title %></h2>
+      <h4><%= entry.userName %></h4>
+      <h5>How was your run? How did you feel physically?</h5>
+      <p><%= entry.body %></p>
+      <h5>What did you think about while running?</h5>
+      <p><%= entry.thoughts %></p>
+      <h5>How did you feel emotionally while running?</h5>
+      <p><%= entry.emotions %></p>
+      </section>
+      <div class="row">
+      <!-- Delete Post -->
+        <%if(entry.user == user.id){ %>
+        <form
+          action="/entries/deleteEntry/<%= entry._id%>?_method=DELETE"
+          method="POST"
+          class="col-3"
+        ><div>
+          <button class="btn btn-dark fa fa-trash" type="submit"></button>
+        </form>
+        <% } %>
+      </div>
+      </div>
+      </div>
+      <!-- Comment Form Section -->
+      <div class="mt-5">
+        <h2>Encouragement</h2>
+        <form action="/comment/createComment/<%= entry._id%>" method="POST">
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <input type="text" class="form-control" id="comment" name="comment">
+          </div>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+      </div>
+      <!-- Display Comments-->
+      <ul>
+        <% for(var i=0; i<comments.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <!--Add user attribution-->
+            <span><%= comments[i].userName%> says: "<%= comments[i].comment%>" 
+            <!--If comment was created by current user, then show delete button-->
+            <br> <%if(comments[i].user == user.id){ %>
+                  <form
+                    action="/comment/deleteComment/<%=entry._id%>/<%= comments[i]._id %>?_method=DELETE"
+                    method="POST"
+                    >
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                  </form>
+                  <%}%>
+          </li>
+        <% } %>
+      </ul> 
+     
+     
+     <!-- Return Navigation -->
+    <div class="col-6 mt-5">
+      <a class="btn btn-dark" href="/dashboard">Return to Profile</a>
+      <a class="btn btn-dark" href="/community">Return to Community</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,17 +1,18 @@
-const Comments = require("../models/Comments");
-const express = require('express')
-const router = express.Router()
-const { ensureAuth } = require('../middleware/auth')
-const mongoose = require('mongoose')
-const User = require("../models/User")
-const Entry = require('../models/Entry') //adding the story model
+const express = require('express');
+const router = express.Router();
+const { ensureAuth } = require('../middleware/auth');
+const mongoose = require('mongoose');
+const User = require("../models/User");
+const Entry = require('../models/Entry');
+const Comment = require("../models/Comment");
+const Goal = require("../models/Goal")
 
 
 module.exports = {
 getCommunity: async (req, res) => {
     try{
       const entries = await Entry.find({ status: 'public' })
-          .populate('entry') 
+          .populate('entries') 
           .sort({ createdAt: 'desc'})
           .lean() 
 
@@ -27,9 +28,9 @@ getCommunity: async (req, res) => {
 },
 getEntry: async (req, res) => {
   try {
-    const entries = await Entry.findById(req.params.id);
-    //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
-    res.render("entry", { entries: entries, user: req.user });
+    const entry = await Entry.findById(req.params.id);
+    const comments = await Comment.find({entry: req.params.id}).sort({ createdAt: "asc" }).lean();
+    res.render("entries", { entry: entry, user: req.user, comments: comments });
   } catch (err) {
     console.log(err); 
   }
@@ -37,8 +38,8 @@ getEntry: async (req, res) => {
 getDashboard: async (req, res) => {
     try {
       const entries = await Entry.find({user: req.user.id});
-
-      res.render("dashboard", { entries: entries, user: req.user });
+      const goal = await Goal.find(req.params.id).sort({ createdAt: "asc" }).lean();
+      res.render("dashboard", { entries: entries, user: req.user, goal: goal});
   } catch (err){
       console.error(err)
       res.render('error/500')
@@ -55,11 +56,16 @@ getAddPage: async (req, res) => {
 createEntry: async (req, res) => {
   try {
     await Entry.create({
-      title: req.body.title,
       status: req.body.status,
+      completed: req.body.completed,
+      title: req.body.title,
+      completed: false,
       body: req.body.body,
+      thoughts: req.body.thoughts,
+      emotions: req.body.emotions,
       userName: req.user.userName,
-      user: req.user.id
+      user: req.user.id,
+      goal: req.body.goal,
     }
     );
     console.log(req.body)
@@ -71,9 +77,8 @@ createEntry: async (req, res) => {
 },
 getEditPage: async (req, res) => {
   try {
-    const entries = await Entry.findById(req.params.id);
-    //const comments = await Comments.find({post: req.params.id}).sort({ createdAt: "asc" }).lean();
-    res.render("edit", { entries: entries, user: req.user });
+    const entry = await Entry.findById(req.params.id);
+    res.render("edit", { entry: entry, user: req.user });
   } catch (err) {
     console.log(err); 
   }
@@ -94,27 +99,13 @@ updateEntry: async (req, res) => {
             runValidators: true // Running validation through the story schema again to make sure it follows all the rules we expect it to follow to make sure nothing malicious enters the database. 
           })
     
-          res.redirect('/entry') // When we're done - go back to the dashboard. 
+          res.redirect('/entries') // When we're done - go back to the dashboard. 
       }
       } catch (err){
       console.log(errr)
       res.render('error/500')
     }
     },
-  likeEntry: async (req, res) => {
-    try {
-      await Entry.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/entry/${req.params.id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  },
   deleteEntry: async (req, res) => {
     try {
       // Find post by id

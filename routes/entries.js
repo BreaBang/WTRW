@@ -10,9 +10,11 @@ router.post("/add", ensureAuth, entriesController.createEntry);
 
 router.get("/:id", ensureAuth, entriesController.getEntry);
 
-router.put("/:id", entriesController.updateEntry);
+router.get("/:id", ensureAuth, entriesController.getEditPage);
 
-router.put("/likeEntry/:id", entriesController.likeEntry);
+router.patch("/editEntry/:id/", entriesController.updateEntry);
+
+//router.put("/:id", entriesController.updateEntry);
 
 router.delete("/deleteEntry/:id", entriesController.deleteEntry);
 
