@@ -24,6 +24,11 @@ const EntrySchema = new mongoose.Schema({
         default: 'public',
         enum: ['public', 'private']
     },
+    runType: {
+        type: String,
+        default: 'Recovery',
+        enum: ['Recovery', 'Base Run','Long Run', 'Easy Run', 'Tempo Run', 'Fartlek', 'Speed Workout', 'Hill Repeats', 'Walk/Run', 'Intervals' ]
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,  
         ref: 'User',

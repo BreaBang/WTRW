@@ -38,8 +38,9 @@ getEntry: async (req, res) => {
 getDashboard: async (req, res) => {
     try {
       const entries = await Entry.find({user: req.user.id});
-      const goal = await Goal.find(req.params.id).sort({ createdAt: "asc" }).lean();
-      res.render("dashboard", { entries: entries, user: req.user, goal: goal});
+      const goals = await Goal.find({user: req.user});
+      res.render("dashboard", { entries: entries, user: req.user, goals: goals});
+  
   } catch (err){
       console.error(err)
       res.render('error/500')
@@ -57,6 +58,7 @@ createEntry: async (req, res) => {
   try {
     await Entry.create({
       status: req.body.status,
+      runType: req.body.runType,
       completed: req.body.completed,
       title: req.body.title,
       completed: false,

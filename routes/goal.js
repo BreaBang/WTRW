@@ -5,7 +5,11 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.post("/:id", ensureAuth, goalController.createGoal);
 
-router.delete("/deleteComment/:id/:goalid", goalController.deleteGoal);
+router.put('/markComplete', goalController.markComplete)
+
+router.put('/markIncomplete', goalController.markIncomplete)
+
+router.delete("/deleteGoal/:id", goalController.deleteGoal);
 
 
 module.exports = router;
