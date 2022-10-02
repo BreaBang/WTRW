@@ -16,6 +16,6 @@ router.patch("/editEntry/:id/", entriesController.updateEntry);
 
 //router.put("/:id", entriesController.updateEntry);
 
-router.delete("/deleteEntry/:id", entriesController.deleteEntry);
+router.delete("/deleteEntry/:id", ensureAuth, entriesController.deleteEntry);
 
 module.exports = router;

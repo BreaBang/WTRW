@@ -45,6 +45,14 @@ const EntrySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,  
         ref: 'Comment',
     },
+    image: {
+        type: String,
+        require: true,
+      },
+      cloudinaryId: {
+        type: String,
+        require: true,
+      },
     })
 
 /* Passing in a new model for story */

@@ -2,7 +2,7 @@
 <section class="container">
 <h3>Add A Journal Entry</h3>
 <div class="row">
-    <form action="/entries/add" method="POST" class="col s12">
+    <form action="/entries/add" class="col s12" method="POST">
         <div class="row">
             <div class="input-field">
                 <input type="text" id="title" name="title">
@@ -47,12 +47,6 @@
             </div>
         </div>
         
-                
-                <label for="status">Status</label>
-
-            </div>
-        </div>
-
         <div class="row">
             <div class="input-field">
                 <h5>How was your run? How did you feel physically?</h5>
@@ -70,11 +64,8 @@
             <textarea id="emotions" name="emotions"></textarea>
         </div>
     </div>
-
-        <div class="row">
-            <button type="submit" class="btn btn-dark add-btn" value="Upload">Submit</button>
+            <button type="submit" class="btn btn-dark add-btn" value="upload">Submit</button>
             <a href="/dashboard" class="btn btn-dark add-btn">Cancel</a>
-        </div>
     </form>
 </div>
 </section>
