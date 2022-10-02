@@ -3,6 +3,16 @@
     display: flex;
     flex-direction: row;
 }
+#intro-container{
+    display:flex;
+    flex-direction: row;
+}
+.intro-container-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 70px 0px 70px;
+}
 .nav-btn{
     margin: 10px 10px 10px 10px;
     color: white;
@@ -17,26 +27,27 @@ a {
     background-color: #076AE0;
 }
 h1 {
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 h2 {
-    font-size: 2rem;
+    font-size: 3.5rem;
 }
 h3 {
-    font-size: 1.75rem;
+    font-size: 3rem;
 }
 h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 h5 {
-    font-size: 1.25rem;
+    font-size: 2rem;
 }
 h6 {
+    font-size: 2rem;
+}
+p{
     font-size: 1.25rem;
 }
-#login-page{
-    background-image: url('public/imgs/herobanner.jpg');
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    height: auto;
+.index-btn{
+    margin: 10px 0px 10px 0px;
 }
+
