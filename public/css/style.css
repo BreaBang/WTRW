@@ -51,6 +51,15 @@ body{
     border-bottom: none;
     border-top: none;
 }
+.entries-layout{
+    display: flex;
+    flex-direction: row;    
+}
+.entries-main{
+    border-right: 2px solid black;
+    margin: 25px 0px 25px 25px;
+    padding-right:30px;
+}
 /* Buttons */
 .nav-btn{
     margin: 10px 10px 10px 10px;

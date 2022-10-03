@@ -11,12 +11,6 @@ router.post("/add", upload.single("file"), ensureAuth, entriesController.createE
 
 router.get("/:id", ensureAuth, entriesController.getEntry);
 
-router.get("/:id", ensureAuth, entriesController.getEditPage);
-
-router.patch("/editEntry/:id/", entriesController.updateEntry);
-
-//router.put("/:id", entriesController.updateEntry);
-
 router.delete("/deleteEntry/:id", ensureAuth, entriesController.deleteEntry);
 
 module.exports = router;

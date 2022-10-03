@@ -1,65 +1,57 @@
 <%- include('partials/header') -%>
-<div class="container">
-       <!-- Entry Section -->
-       <section class="entry-group">
-        <img class="img-thumbnail img-size" src="<%= entry.image%>" />
-      <h2><%= entry.title %></h2>
-      <h5>Runner: <%= entry.userName %></h5>
-      <h5>Type of Run: <%= entry.runType %></h5>
-      <h5>How was your run? How did you feel physically?</h5>
-      <p><%= entry.body %></p>
-      <h5>What did you think about while running?</h5>
-      <p><%= entry.thoughts %></p>
-      <h5>How did you feel emotionally while running?</h5>
-      <p><%= entry.emotions %></p>
-      </section>
-      <div class="row">
-      <!-- Delete Post -->
-        <%if(entry.user == user.id){ %>
-        <form
-          action="/entries/deleteEntry/<%= entry._id%>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        ><div>
-          <button class="btn btn-danger" type="submit">Delete Entry</button>
-        </form>
+<section class="entries-layout">
+  <!-- Entry Section -->
+  <main class="container entries-main">  
+    <img class="img-thumbnail img-size" src="<%= entry.image%>" />
+    <h2><%= entry.title %></h2>
+    <h5>Runner: <%= entry.userName %></h5>
+    <h5>Type of Run: <%= entry.runType %></h5>
+    <h5>How was your run? How did you feel physically?</h5>
+    <p><%= entry.body %></p>
+    <h5>What did you think about while running?</h5>
+    <p><%= entry.thoughts %></p>
+    <h5>How did you feel emotionally while running?</h5>
+    <p><%= entry.emotions %></p>
+  <!-- Delete Post -->
+    <%if(entry.user == user.id){ %>
+    <form
+        action="/entries/deleteEntry/<%= entry._id%>?_method=DELETE"
+        method="POST"
+        class="col-3"
+      >
+      <button class="btn btn-danger" type="submit">Delete Entry</button>
+    </form>
         <% } %>
-      </div>
-      
-      <!-- Comment Form Section -->
-      <div class="mt-5">
-        <h2>Encouragement</h2>
-        <form action="/comment/createComment/<%= entry._id%>" method="POST">
-          <div class="mb-3">
+<div class="space"></div>
+</main>
+<!-- Comment Form Section -->
+  <section>
+      <h2>Encouragement</h2>
+      <form action="/comment/createComment/<%= entry._id%>" method="POST">
             <label for="comment" class="form-label">Comment</label>
             <input type="text" class="form-control" id="comment" name="comment">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-      </div>
-      <!-- Display Comments-->
-      <ul class="list-group-flush">
-        <% for(var i=0; i<comments.length; i++) {%>
-          <li class="list-group-item">
-            <div class="display-encouragement">
-            <!--Add user attribution-->
-            <span><%= comments[i].userName%>: <%= comments[i].comment%> </span>
-            <!--If comment was created by current user, then show delete button-->
-          <%if(comments[i].user == user.id){ %>
-                  <form
-                    action="/comment/deleteComment/<%=entry._id%>/<%= comments[i]._id %>?_method=DELETE"
-                    method="POST"
-                    >
-                    <button type="submit" class="btn btn-danger fa fa-trash btn-encouragement-delete"></button>
-                  </form>
-                </div>
-
-                  <%}%>
-                
-          </li>
+<!-- Display Comments-->
+  <section>
+    <ul class="list-group-flush">
+      <% for(var i=0; i<comments.length; i++) {%>
+      <li class="list-group-item display-encouragement">
+<!--Add user attribution-->
+      <span><%= comments[i].userName%>: <%= comments[i].comment%> </span>
+<!--If comment was created by current user, then show delete button-->
+      <%if(comments[i].user == user.id){ %>
+      <form
+         action="/comment/deleteComment/<%=entry._id%>/<%= comments[i]._id %>?_method=DELETE"
+         method="POST"
+        >
+        <button type="submit" class="btn btn-danger fa fa-trash btn-encouragement-delete"></button>
+      </form>
+      <%}%>        
+    </li>
         <% } %>
-      </ul> 
-     <div class="space">
-      
-     </div>
+    </ul>
+  </section>
+</section>
 <%- include('partials/footer') -%>

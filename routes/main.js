@@ -17,7 +17,6 @@ router.post("/signup", authController.postSignup);
 router.get("/dashboard", ensureAuth, entriesController.getDashboard);
 router.get("/community", ensureAuth, entriesController.getCommunity);
 router.get("/add", ensureAuth, entriesController.getAddPage);
-router.get("/edit", ensureAuth, entriesController.getEditPage);
 router.post("/createComment/:id", commentsController.createComment);
 router.get("/goal", goalController.getGoalPage);
 
