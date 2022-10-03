@@ -1,12 +1,11 @@
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row mt-5">
-    <div class="col-6">
        <!-- Entry Section -->
        <section class="entry-group">
+        <img class="img-thumbnail img-size" src="<%= entry.image%>" />
       <h2><%= entry.title %></h2>
-      <h4><%= entry.userName %></h4>
-      <h5><%= entry.runType %></h5>
+      <h5>Runner: <%= entry.userName %></h5>
+      <h5>Type of Run: <%= entry.runType %></h5>
       <h5>How was your run? How did you feel physically?</h5>
       <p><%= entry.body %></p>
       <h5>What did you think about while running?</h5>
@@ -22,12 +21,11 @@
           method="POST"
           class="col-3"
         ><div>
-          <button class="btn btn-dark fa fa-trash" type="submit"></button>
+          <button class="btn btn-danger" type="submit">Delete Entry</button>
         </form>
         <% } %>
       </div>
-      </div>
-      </div>
+      
       <!-- Comment Form Section -->
       <div class="mt-5">
         <h2>Encouragement</h2>
@@ -36,35 +34,32 @@
             <label for="comment" class="form-label">Comment</label>
             <input type="text" class="form-control" id="comment" name="comment">
           </div>
-          <button type="submit" class="btn btn-dark">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
       <!-- Display Comments-->
-      <ul>
+      <ul class="list-group-flush">
         <% for(var i=0; i<comments.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="list-group-item">
+            <div class="display-encouragement">
             <!--Add user attribution-->
-            <span><%= comments[i].userName%> says: "<%= comments[i].comment%>" 
+            <span><%= comments[i].userName%>: <%= comments[i].comment%> </span>
             <!--If comment was created by current user, then show delete button-->
-            <br> <%if(comments[i].user == user.id){ %>
+          <%if(comments[i].user == user.id){ %>
                   <form
                     action="/comment/deleteComment/<%=entry._id%>/<%= comments[i]._id %>?_method=DELETE"
                     method="POST"
                     >
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger fa fa-trash btn-encouragement-delete"></button>
                   </form>
+                </div>
+
                   <%}%>
+                
           </li>
         <% } %>
       </ul> 
-     
-     
-     <!-- Return Navigation -->
-    <div class="col-6 mt-5">
-      <a class="btn btn-dark" href="/dashboard">Return to Profile</a>
-      <a class="btn btn-dark" href="/community">Return to Community</a>
-    </div>
-  </div>
-</div>
-
+     <div class="space">
+      
+     </div>
 <%- include('partials/footer') -%>

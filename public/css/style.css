@@ -1,4 +1,10 @@
 /* Layout Styling */
+body{
+    height: auto;
+}
+.space{
+   height: 100px;
+}
 .nav{
     display: flex;
     flex-direction: row;
@@ -23,11 +29,6 @@
     justify-content: center;
     padding: 0px 70px 0px 150px;
 }
-.nav-btn{
-    margin: 10px 10px 10px 10px;
-    color: white;
-    font-size: 1.75rem;
-}
 .sideBar{
     background-image: url("/imgs/loginSideImage.png");
     height: 1050px;
@@ -38,7 +39,50 @@
     height: 1050px;
     width: 900px;
 }
-
+.display-encouragement{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.list-group-flush{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-bottom: none;
+    border-top: none;
+}
+/* Buttons */
+.nav-btn{
+    margin: 10px 10px 10px 10px;
+    color: white;
+    font-size: 1.75rem;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.index-btn{
+    margin: 10px 0px 10px 0px;
+}
+.btn-encouragement-delete {
+    margin-left: 10px;
+ }
+ /* Forms */
+ .form-control{
+    font-size: 1.75rem;
+}
+input{
+    font-size: 1.5rem;
+}
+label{
+    font-size: 2rem;
+}
+/* Images */
+.logo{
+    height: 200px;
+    width: 200px;
+}
+.img-size{
+    height: 500px;
+    width: auto;
+}
 /* General Styling */
 a {
     text-decoration: none;
@@ -56,7 +100,7 @@ h3 {
     font-size: 3rem;
 }
 h4 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 h5 {
     font-size: 2rem;
@@ -67,20 +111,7 @@ h6 {
 p{
     font-size: 1.5rem;
 }
-label{
-    font-size: 2rem;
-}
-.index-btn{
-    margin: 10px 0px 10px 0px;
-}
-.form-control{
-    font-size: 1.75rem;
-}
-input{
-    font-size: 1.5rem;
-}
-.logo{
-    height: 200px;
-    width: 200px;
+li {
+    list-style: none;
 }
 
