@@ -3,10 +3,11 @@ const router = express.Router();
 const entriesController = require("../controllers/entries");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const Entry = require("../models/Entry");
+const upload = require("../middleware/multer");
 
 //Entries Routes - simplified for now
 
-router.post("/add", ensureAuth, entriesController.createEntry);
+router.post("/add", upload.single("file"), ensureAuth, entriesController.createEntry);
 
 router.get("/:id", ensureAuth, entriesController.getEntry);
 

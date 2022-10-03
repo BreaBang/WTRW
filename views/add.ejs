@@ -2,7 +2,7 @@
 <section class="container">
 <h3>Add A Journal Entry</h3>
 <div class="row">
-    <form action="/entries/add" class="col s12" method="POST">
+    <form action="/entries/add" enctype="multipart/form-data" method="POST" class="col s12">
         <div class="row">
             <div class="input-field">
                 <input type="text" id="title" name="title">
@@ -63,10 +63,15 @@
             <h5>How did you feel emotionally while running?</h5>
             <textarea id="emotions" name="emotions"></textarea>
         </div>
-    </div>
-            <button type="submit" class="btn btn-dark add-btn" value="upload">Submit</button>
-            <a href="/dashboard" class="btn btn-dark add-btn">Cancel</a>
+        <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="form-control" id="imageUpload" name="file">
+          </div>
+          <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
     </form>
+    <div>
+        <a href="/dashboard" class="btn btn-dark add-btn">Cancel</a>
+    </div>
 </div>
 </section>
 <%- include('partials/footer') -%>

@@ -88,6 +88,8 @@ exports.postSignup = (req, res, next) => {
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
+    profilePhoto: result.secure_url,
+    cloudinaryId: result.public_id,
   });
 
   User.findOne(

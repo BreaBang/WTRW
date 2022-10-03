@@ -1,6 +1,7 @@
 const Entry = require('../models/Entry');
 const Comment = require("../models/Comment");
 const Goal = require("../models/Goal")
+const cloudinary = require("../middleware/cloudinary");
 
 
 module.exports = {
@@ -35,7 +36,6 @@ getDashboard: async (req, res) => {
       const entries = await Entry.find({user: req.user.id});
       const goals = await Goal.find({user: req.user});
       res.render("dashboard", { entries: entries, user: req.user, goals: goals});
-  
   } catch (err){
       console.error(err)
       res.render('error/500')
@@ -50,6 +50,7 @@ getAddPage: async (req, res) => {
     }
   },
 createEntry: async (req, res) => {
+  const result = await cloudinary.uploader.upload(req.file.path);
   try {
     await Entry.create({
       status: req.body.status,
@@ -63,6 +64,8 @@ createEntry: async (req, res) => {
       userName: req.user.userName,
       user: req.user.id,
       goal: req.body.goal,
+      image: result.secure_url,
+      cloudinaryId: result.public_id,
     }
     );
     console.log(req.body)
