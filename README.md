@@ -1,3 +1,5 @@
+ <img src="https://github.com/BreaBang/100/raw/main/WTRW.gif">
+ 
 # Write to Run Well
 Write to Run Well is a full stack running web application where runners can log their training, races and goals. Users can create public or private journal entries and read public journal entries of other runners. 
 
@@ -17,5 +19,6 @@ I am still in the process of building out the following features:
 - The ability to mark goals and races as completed. 
 - Indiviual public user profiles that show a user's public stories and a profile photo.
 - Add the ability to search for users and add them to a "team" or "club" so that users who know eachother can see eachother's public entries.
+- I'd like to add a few more Passport strategies so users could login with Twitter, Google, Facebook and other apps. 
 - I want to make adding a photo to a post available but optional. In my original code I had the photo upload but it would not submit without the photo.
 - An About section for the app.
