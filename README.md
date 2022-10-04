@@ -13,8 +13,9 @@ While building this application I learned to use Bootstrap for the first time. B
 
 I am still in the process of building out the following features:
 
-- Indiviual public user profiles that show a user's public stories and a profile photo.
-- I want to make adding a photo to a post available but optional. In my original code I had the photo upload but it would not submit without the photo.
 - The ability to edit journal entries.
 - The ability to mark goals and races as completed. 
+- Indiviual public user profiles that show a user's public stories and a profile photo.
+- Add the ability to search for users and add them to a "team" or "club" so that users who know eachother can see eachother's public entries.
+- I want to make adding a photo to a post available but optional. In my original code I had the photo upload but it would not submit without the photo.
 - An About section for the app.
