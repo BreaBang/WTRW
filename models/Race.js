@@ -6,7 +6,7 @@ const RaceSchema = new mongoose.Schema({
         type: String,
     },
     raceDate: {
-        type: String,
+        type: Date,
     },
     body: {
         type: String,
@@ -29,5 +29,5 @@ const RaceSchema = new mongoose.Schema({
         default: Date.now  
     },
 })
-
+RaceSchema.path("raceDate") instanceof Date
 module.exports = mongoose.model('Race', RaceSchema)

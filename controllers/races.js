@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuth } = require('../middleware/auth');
 const mongoose = require('mongoose');
-const Entry = require("../models/Entry");
 const Race = require('../models/Race');
 
 
@@ -11,7 +10,7 @@ createRace: async (req, res) => {
   try {
     await Race.create({
       race: req.body.race,
-      raceDate: req.body.race,
+      raceDate: req.body.raceDate,
       completed: false,
       userName: req.user.userName,
       user: req.user.id,
@@ -25,7 +24,7 @@ createRace: async (req, res) => {
 },
 markComplete: async (req, res) => {
   try {
-    const goal = await Race.find({ _id: req.body.goalIdFromJSFile })
+    const race = await Race.find({ _id: req.body.raceIdFromJSFile })
     console.log(goal[0])
       try {
         await Race.findOneAndUpdate({ _id: req.body.raceIdFromJSFile }, {
@@ -43,10 +42,10 @@ markComplete: async (req, res) => {
 },
 markIncomplete: async (req, res) => {
   try {
-    const goal = await Race.find({ _id: req.body.goalIdFromJSFile })
-    if (req.body.user === goal[0].user) {
+    const race = await Race.find({ _id: req.body.raceIdFromJSFile })
+    if (req.body.user === race[0].user) {
       try {
-        await Race.findOneAndUpdate({ _id: req.body.goalIdFromJSFile }, {
+        await Race.findOneAndUpdate({ _id: req.body.raceIdFromJSFile }, {
           completed: false
         })
         console.log('Marked Incomplete')
@@ -62,7 +61,6 @@ markIncomplete: async (req, res) => {
 },
 deleteRace: async (req, res) => {
     try {
-      const goal = await Race.findById({ _id: req.params.id });
       await Race.remove({ _id: req.params.id });
       console.log("Deleted Race");
       res.redirect("/dashboard");

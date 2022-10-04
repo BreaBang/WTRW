@@ -9,7 +9,7 @@ router.put('/markComplete', raceController.markComplete)
 
 router.put('/markIncomplete', raceController.markIncomplete)
 
-router.delete("/deleteGoal/:id", raceController.deleteRace);
+router.delete("/deleteRace/:id", raceController.deleteRace);
 
 
 module.exports = router;

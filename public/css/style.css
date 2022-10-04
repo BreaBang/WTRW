@@ -63,6 +63,10 @@ body{
     margin: 25px 0px 25px 25px;
     padding-right:30px;
 }
+.encouragement-section{
+    margin: 25px 0px 25px 25px;
+    padding-left:30px;
+}
 /* Buttons */
 .nav-btn{
     margin: 10px 10px 10px 10px;
@@ -92,6 +96,15 @@ label{
 .form-div{
     margin-top: 10px;
 }
+.race-entry{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.race-form{
+    padding-left: 25px;
+}
 
 /* Images */
 .logo{
@@ -111,6 +124,10 @@ label{
 /* General Styling */
 a {
     text-decoration: none;
+}
+.footer-link{
+    text-decoration: none;
+    color: white;
 }
 .nav-section{
     background-color: #076AE0;

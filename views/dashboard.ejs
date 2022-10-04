@@ -10,8 +10,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Date</th>
       <th scope="col">Race Name</th>
+      <th scope="col">Date and Start Time</th>
       <th scope="col"><span class="fa fa-trash"></span></th>
     </tr>
   </thead>
@@ -34,16 +34,18 @@
   </table>
 <!-- Add a Race -->
 <form action="/race/createRace" method="POST" class="col s12">
-  <div class="row">
-      <div class="input-field">
-        <label for="race">Add a Race:</label>
-        <div class="col-3">
-          <input type="text" id="race" name="race" class="form-control">
-          <input type="text" id="raceDate" name="raceDate" class="form-control">
-      </div>
+  <div class="form-row race-entry">
+    <label for="race" class="entry-label">Add a Race:</label>
+    <div class="col-3 race-form">
+      <span>Race:</span><input type="text" id="race" name="race" class="form-control">
+    </div>
+    <div class="col-3 race-form">
+      Race Date:<input type="text" id="raceDate" name="raceDate" class="form-control">
+    </div>
+    <div class="col-3 race-form">
+    <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
   </div>
-  </div>
-  <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
+</div>
 </form>
 
 <!-- Goals -->
@@ -51,9 +53,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Date</th>
+      <th scope="col">Date Added</th>
       <th scope="col">Goal</th>
-      <th scope="col">Completed?</th>
       <th scope="col"><span class="fa fa-trash"></span></th>
     </tr>
   </thead>
@@ -62,7 +63,6 @@
       <tr class='goalItem' data-name='<%=el.user%>' data-id='<%=el._id%>'>
         <td><span><%=el.createdAt.toDateString() %></span></td>
         <td><span class ='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.goal %></span></td>
-        <td><span><%= el.completed %></span></td>
         <td><span> <form
         action="/goal/deleteGoal/<%= el._id%>?_method=DELETE"
         method="POST"
@@ -77,13 +77,14 @@
   </table>
 <!-- Add a Goal -->
 <form action="/goal/createGoal" method="POST" class="col s12">
-  <div class="row">
-      <div class="input-field">
-        <label for="goal">Add a Goal:</label>
+  <div class="form-row race-entry">
+        <label for="goal" class="entry-label">Add a Goal:</label>
+        <div class="col-3 race-form">
           <input type="text" id="goal" name="goal" class="form-control">
       </div>
-  </div>
+      <div class="col-3 race-form">
   <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
+  </div></div>
 </form>
 
 <!--If entries add here -->
