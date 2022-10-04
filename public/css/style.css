@@ -29,6 +29,9 @@ body{
     justify-content: center;
     padding: 0px 70px 0px 150px;
 }
+.input-box{
+    height: 300px;
+}
 .sideBar{
     background-image: url("/imgs/loginSideImage.png");
     height: 1050px;
@@ -83,6 +86,10 @@ input{
 label{
     font-size: 2rem;
 }
+.form-div{
+    margin-top: 10px;
+}
+
 /* Images */
 .logo{
     height: 200px;
@@ -91,6 +98,9 @@ label{
 .img-size{
     height: 500px;
     width: auto;
+}
+.side-img-add{
+    margin: 25px 25px 25px 25px;
 }
 /* General Styling */
 a {
@@ -122,5 +132,11 @@ p{
 }
 li {
     list-style: none;
+}
+.add-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
 }
 

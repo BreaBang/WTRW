@@ -1,17 +1,23 @@
 <%- include('partials/header') -%>
-<section class="container">
+<section class="add-page">
+<section class="side-img-add">
+    <img src="/imgs/add-banner.png"
+</section>
+<main class="container main-add">
+<div class="row form-div">
 <h3>Add A Journal Entry</h3>
-<div class="row">
+</div>
+<div class="row form-div">
     <form action="/entries/add" enctype="multipart/form-data" method="POST" class="col s12">
         <div class="row">
-            <div class="input-field">
+            <div class="input-field form-div">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="title" class="form-control">
                 
             </div>
         </div>
 
-        <div class="row">
+        <div class="row form-div">
             <div class="input-field">
                 <label for="status">Privacy</label>
                  <select id="status" name="status" class="form-control">
@@ -20,7 +26,7 @@
                 </select>
             </div>
             <div class="row">
-                <div class="input-field">
+                <div class="input-field form-div">
                     <label for="status">Run Type</label>
                      <select id="runType" name="runType" class="form-control">
                         <option value="Recovery" selected>Recovery</option>
@@ -36,21 +42,22 @@
                     </select>
                 </div>
         
-        <div class="row">
+        <div class="row form-div">
             <div class="input-field">
                 <h5>How was your run? How did you feel physically?</h5>
-                <textarea id="body" name="body"></textarea>
+                <textarea id="body" name="body" class="form-control input-box"></textarea>
             </div>
         </div>
-        <div class="row">
+        <div class="row form-div">
             <div class="input-field">
                 <h5>What did you think about while running?</h5>
-                <textarea id="thoughts" name="thoughts"></textarea>
+                <textarea id="thoughts" name="thoughts" class="form-control input-box"></textarea>
             </div>
         </div>
+        <div class="row form-div">
         <div class="input-field">
             <h5>How did you feel emotionally while running?</h5>
-            <textarea id="emotions" name="emotions"></textarea>
+            <textarea id="emotions" name="emotions" class="form-control input-box"></textarea>
         </div>
         <!-- Holding off on images for now. Will allow them to be added eventually. Leaving code for later. -->
         <!--
@@ -59,13 +66,14 @@
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
     -->
+    <section class="form-row">
           <button type="submit" class="col-3 btn btn-primary btn-lg index-btn" value="Upload">Submit</button>
     </form>
     <div>
         <a href="/dashboard" class="col-3 btn btn-primary btn-lg index-btn">Cancel</a>
     </div>
 </div>
-
+<div class="space"></div>
+</main>
 </section>
-
 <%- include('partials/footer') -%>
