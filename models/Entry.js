@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const EntrySchema = new mongoose.Schema({
     title: {
         type: String,
+        $substr: ["$body", 0, 50],
     },
     goal: {
         type: mongoose.Schema.Types.ObjectId,

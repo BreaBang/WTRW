@@ -2,21 +2,22 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuth } = require('../middleware/auth');
 const mongoose = require('mongoose');
-const Goal = require("../models/Goal");
 const Entry = require("../models/Entry");
+const Race = require('../models/Race');
 
 
 module.exports = {
-createGoal: async (req, res) => {
+createRace: async (req, res) => {
   try {
-    await Goal.create({
-      goal: req.body.goal,
+    await Race.create({
+      race: req.body.race,
+      raceDate: req.body.race,
       completed: false,
       userName: req.user.userName,
       user: req.user.id,
     });
     console.log(req.body)
-    console.log('Goal has been added')
+    console.log('Race has been added')
     res.redirect('/dashboard') // leave slash
   } catch (err) {
     console.log(err)
@@ -24,10 +25,10 @@ createGoal: async (req, res) => {
 },
 markComplete: async (req, res) => {
   try {
-    const goal = await Goal.find({ _id: req.body.goalIdFromJSFile })
+    const goal = await Race.find({ _id: req.body.goalIdFromJSFile })
     console.log(goal[0])
       try {
-        await Entry.findOneAndUpdate({ _id: req.body.goalIdFromJSFile }, {
+        await Race.findOneAndUpdate({ _id: req.body.raceIdFromJSFile }, {
           completed: true
         })
         console.log('Marked Complete')
@@ -42,10 +43,10 @@ markComplete: async (req, res) => {
 },
 markIncomplete: async (req, res) => {
   try {
-    const goal = await Goal.find({ _id: req.body.goalIdFromJSFile })
+    const goal = await Race.find({ _id: req.body.goalIdFromJSFile })
     if (req.body.user === goal[0].user) {
       try {
-        await Goal.findOneAndUpdate({ _id: req.body.goalIdFromJSFile }, {
+        await Race.findOneAndUpdate({ _id: req.body.goalIdFromJSFile }, {
           completed: false
         })
         console.log('Marked Incomplete')
@@ -59,11 +60,11 @@ markIncomplete: async (req, res) => {
     console.log(err)
   }
 },
-deleteGoal: async (req, res) => {
+deleteRace: async (req, res) => {
     try {
-      const goal = await Goal.findById({ _id: req.params.id });
-      await Goal.remove({ _id: req.params.id });
-      console.log("Deleted Goal");
+      const goal = await Race.findById({ _id: req.params.id });
+      await Race.remove({ _id: req.params.id });
+      console.log("Deleted Race");
       res.redirect("/dashboard");
     } catch (err) { 
       res.redirect("/dashboard");

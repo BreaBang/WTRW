@@ -11,7 +11,8 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const entriesRoutes = require("./routes/entries");
 const commentsRoutes = require("./routes/comments");
-const goalRoutes = require("./routes/goal")
+const goalRoutes = require("./routes/goal");
+const raceRoutes = require("./routes/race");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -60,6 +61,7 @@ app.use("/", mainRoutes);
 app.use("/entries", entriesRoutes);
 app.use("/comment", commentsRoutes);
 app.use("/goal", goalRoutes);
+app.use("/race", raceRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {

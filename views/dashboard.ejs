@@ -1,6 +1,52 @@
 <%- include('partials/header') -%>
 <main class="container">
+  <section class="side-img-community">
+    <img src="/imgs/journal-banner.png">
+  </section>
 <h4><%= user.userName %>'s Running Journal</p></h4>
+
+<!-- Races -->
+<h5>Your Races:</h5>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Race Name</th>
+      <th scope="col"><span class="fa fa-trash"></span></th>
+    </tr>
+  </thead>
+    <tbody>
+    <% races.forEach(el => { %>
+      <tr class='raceItem' data-name='<%=el.user%>' data-id='<%=el._id%>'>
+        <td><span><%=el.race %></span></td>
+        <td><span><%=el.raceDate %></span></td>
+        <td><span> <form
+        action="/race/deleteRACE/<%= el._id%>?_method=DELETE"
+        method="POST"
+        class="col-3"
+      >
+        <button class="btn btn-dark fa fa-trash" type="submit"></button>
+      </form>
+      </span></td>
+      </tr>
+    <% }) %>
+    </tbody>
+  </table>
+<!-- Add a Race -->
+<form action="/race/createRace" method="POST" class="col s12">
+  <div class="row">
+      <div class="input-field">
+        <label for="race">Add a Race:</label>
+        <div class="col-3">
+          <input type="text" id="race" name="race" class="form-control">
+          <input type="text" id="raceDate" name="raceDate" class="form-control">
+      </div>
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
+</form>
+
+<!-- Goals -->
 <h5>Your Goals:</h5>
 <table class="table">
   <thead>
@@ -29,9 +75,16 @@
     <% }) %>
     </tbody>
   </table>
-
-  <a class="btn btn-outline-dark" href="/goal">Add a Goal</a>
-
+<!-- Add a Goal -->
+<form action="/goal/createGoal" method="POST" class="col s12">
+  <div class="row">
+      <div class="input-field">
+        <label for="goal">Add a Goal:</label>
+          <input type="text" id="goal" name="goal" class="form-control">
+      </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
+</form>
 
 <!--If entries add here -->
 <h5>Here are your journal entries:</h5>

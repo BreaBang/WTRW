@@ -76,6 +76,9 @@ body{
 .btn-encouragement-delete {
     margin-left: 10px;
  }
+ .btn-goal{
+    margin: 10px 0px 10px 0px;
+ }
  /* Forms */
  .form-control{
     font-size: 1.75rem;
@@ -98,6 +101,9 @@ label{
 .img-size{
     height: 500px;
     width: auto;
+}
+.side-img-community{
+    margin: 25px 25px 25px 25px;
 }
 .side-img-add{
     margin: 25px 25px 25px 25px;
@@ -135,8 +141,7 @@ li {
 }
 .add-page{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    
+    align-items: center;
 }
-

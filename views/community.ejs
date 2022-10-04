@@ -1,14 +1,17 @@
 <%- include('partials/header') -%>
 <div class="container">
+  <section class="side-img-community">
+    <img src="/imgs/community-banner.png">
+</section>
   <div class="row justify-content-center mt-5">
     <ul class="row list-unstyled">
       <% for(var i=0; i<entries.length; i++) {%>
-        <li class="col-6 justify-content-between mt-5">
-          <div class="card" style="width: 18rem; height: 16rem;">
+        <li class="col-3 justify-content-between mt-5">
+          <div class="card" style="width: 20rem; height: 20rem;">
             <div class="card-body">
-              <h5 class="card-title"><%= entries[i].title%></h4>
+              <h5 class="card-title"><%= entries[i].title.substring(0, 20)+"..."%></h4>
               <span class="card-text"><%= entries[i].userName%></span>
-              <p class="card-text"><%= entries[i].body.substring(0, 75)+"..."%></p>
+              <p class="card-text"><%= entries[i].body.substring(0, 50)+"..."%></p>
               <a href="/entries/<%= entries[i]._id%>" class="btn btn-primary">Read More</a>
             </div>
           </div>

@@ -1,6 +1,7 @@
 const Entry = require('../models/Entry');
 const Comment = require("../models/Comment");
-const Goal = require("../models/Goal")
+const Goal = require("../models/Goal");
+const Race = require("../models/Race")
 /* Leaving for later, not allowing images at this time. */
 const cloudinary = require("../middleware/cloudinary");
 
@@ -36,11 +37,14 @@ getDashboard: async (req, res) => {
     try {
       const entries = await Entry.find({user: req.user.id});
       const goals = await Goal.find({user: req.user});
+      const races = await Race.find({user: req.user});
       // Redirects the user to the dashboard after the post.
       res.render("dashboard", { 
         entries: entries, 
         user: req.user, 
-        goals: goals});
+        goals: goals,
+        races: races,
+      });
   } catch (err){
       console.error(err)
       res.render('error/500')
