@@ -105,11 +105,15 @@ label{
 .race-form{
     padding-left: 25px;
 }
+.form-label{
+    font-size: 1.75rem;
+}
 
 /* Images */
 .logo{
     height: 200px;
     width: 200px;
+    margin-top: 25px;
 }
 .img-size{
     height: 500px;
