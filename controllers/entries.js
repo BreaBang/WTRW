@@ -1,7 +1,8 @@
 const Entry = require('../models/Entry');
 const Comment = require("../models/Comment");
 const Goal = require("../models/Goal");
-const Race = require("../models/Race")
+const Race = require("../models/Race");
+const Club = require("../models/Club")
 /* Leaving for later, not allowing images at this time. */
 const cloudinary = require("../middleware/cloudinary");
 
