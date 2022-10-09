@@ -11,7 +11,7 @@
     <form action="/entries/add" enctype="multipart/form-data" method="POST" class="col s12">
         <div class="row">
             <div class="input-field form-div">
-                <label for="title">Title</label>
+                <label for="title"><h5>Title</h5></label>
                 <input type="text" id="title" name="title" class="form-control">
                 
             </div>
@@ -19,7 +19,7 @@
 
         <div class="row form-div">
             <div class="input-field">
-                <label for="status">Privacy</label>
+                <label for="status"><h5>Privacy</h5></label>
                  <select id="status" name="status" class="form-control">
                    <option value="public" selected>Public</option>
                     <option value="private">Private</option>
@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="input-field form-div">
-                    <label for="status">Run Type</label>
+                    <label for="status"><h5>Run Type</h5></label>
                      <select id="runType" name="runType" class="form-control">
                         <option value="Recovery" selected>Recovery</option>
                         <option value="Base Run">Base Run</option>
@@ -41,7 +41,22 @@
                         <option value="Race">Race</option>
                     </select>
                 </div>
-        
+        <div class="column run-stats">
+        <div class="row">
+            <div class="input-field form-div">
+                <label for="duration"><h5>Duration</h5></label>
+                 <input type="text" id="duration" name="duration" class="form-control duration-width">
+                        
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field form-div">
+                <label for="distance"><h5>Distance</h5></label>
+                 <input type="text" id="distance" name="distance" class="form-control distance-width">
+                        
+            </div>
+        </div>
+    </div>
         <div class="row form-div">
             <div class="input-field">
                 <h5>How was your run? How did you feel physically?</h5>
@@ -66,7 +81,7 @@
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
     -->
-    <section class="form-row">
+    <section class="form-row btn-row">
           <button type="submit" class="col-3 btn btn-primary btn-lg index-btn" value="Upload">Submit</button>
     </form>
     <div>

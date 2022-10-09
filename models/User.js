@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema({
   user: {
     type: String
   },
+  club: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Club",
+  },
   profilePhoto: {
     type: String,
     require: true,

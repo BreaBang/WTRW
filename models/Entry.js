@@ -20,6 +20,12 @@ const EntrySchema = new mongoose.Schema({
     emotions: {
         type: String,
     },
+    distance: {
+        type: String,
+    },
+    duration: {
+        type: String,
+    },
     status: {
         type: String,
         default: 'public',

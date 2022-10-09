@@ -68,6 +68,8 @@ createEntry: async (req, res) => {
       body: req.body.body,
       thoughts: req.body.thoughts,
       emotions: req.body.emotions,
+      duration: req.body.duration,
+      distance: req.body.distance,
       userName: req.user.userName,
       user: req.user.id,
     }
