@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
   profilePhoto: {
     type: String,
   },
-  friends: 
+  buddies: 
     [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

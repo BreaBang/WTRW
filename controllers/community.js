@@ -6,23 +6,23 @@ const Club = require("../models/Club")
 const User = require('../models/User')
 
 module.exports = {
-addFriend: async (req,res) =>{
+addBuddy: async (req,res) =>{
     try {
         await User.findOneAndUpdate({_id: req.user.id}, 
-            {$addToSet: {friends: req.params.id}})
-        console.log('Added Friend')
-        res.redirect('/friends')
+            {$addToSet: {buddies: req.params.id}})
+        console.log('Added Buddy')
+        res.redirect('/buddies')
     } catch (err) {
         console.log(err)
     }
 },
 // Removes follower from 'friends.ejs'
-removeFriend: async (req,res) =>{
+removeBuddy: async (req,res) =>{
     try {
         await User.findOneAndUpdate({_id: req.user.id}, 
             {$pull: {friends: req.params.id}})
-        console.log('Deleted Friend')
-        res.redirect('/friends')
+        console.log('Deleted Buddy')
+        res.redirect('/buddies')
     } catch (err) {
         console.log(err)
     }
