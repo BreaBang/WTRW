@@ -1,8 +1,3 @@
-const Entry = require('../models/Entry');
-const Comment = require("../models/Comment");
-const Goal = require("../models/Goal");
-const Race = require("../models/Race");
-const Club = require("../models/Club")
 const User = require('../models/User')
 
 module.exports = {

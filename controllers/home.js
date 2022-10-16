@@ -1,3 +1,8 @@
+const User = require('../models/User');
+const Entry = require('../models/Entry');
+const Goal = require('../models/Goal');
+const Race = require('../models/Race')
+
 module.exports = {
 // Get the Login Index Page
   getIndex: (req, res) => {
