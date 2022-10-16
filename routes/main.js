@@ -14,10 +14,11 @@ router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
-router.get("/dashboard", ensureAuth, entriesController.getDashboard);
-router.get("/community", ensureAuth, entriesController.getCommunity);
+router.get("/dashboard", ensureAuth, homeController.getDashboard);
+router.get("/community", ensureAuth, homeController.getCommunity);
 router.get("/add", ensureAuth, entriesController.getAddPage);
 router.post("/createComment/:id", commentsController.createComment);
+router.get("/:userId", ensureAuth, homeController.getProfile);
 
 
 

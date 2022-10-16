@@ -8,23 +8,7 @@ const cloudinary = require("../middleware/cloudinary");
 
 
 module.exports = {
-getCommunity: async (req, res) => {
-    try{
-      const entries = await Entry.find({ status: 'public' })
-          .populate('entries') 
-          .sort({ createdAt: 'desc'})
-          .lean() 
-
-          res.render('community', { 
-            entries: entries, body: req.body, userName: req.user.userName
-          }
-          )
-  } catch (err) {
-      console.error(err)
-      res.render('error/500')
-
-  }
-},
+// Get Journal Entries
 getEntry: async (req, res) => {
   try {
     const entry = await Entry.findById(req.params.id);
@@ -34,24 +18,7 @@ getEntry: async (req, res) => {
     console.log(err); 
   }
 },
-getDashboard: async (req, res) => {
-    try {
-      const entries = await Entry.find({user: req.user.id});
-      const goals = await Goal.find({user: req.user});
-      const races = await Race.find({user: req.user});
-      // Redirects the user to the dashboard after the post.
-      res.render("dashboard", { 
-        entries: entries, 
-        user: req.user, 
-        goals: goals,
-        races: races,
-      });
-  } catch (err){
-      console.error(err)
-      res.render('error/500')
-      }
-
-  },
+// Add Journal Entry
 getAddPage: async (req, res) => {
     try {
       res.render("add");
@@ -59,6 +26,7 @@ getAddPage: async (req, res) => {
       console.log(err);
     }
   },
+// Create Journal Entry
 createEntry: async (req, res) => {
   try {
     await Entry.create({
@@ -83,6 +51,7 @@ createEntry: async (req, res) => {
     console.log(err)
   }
 },
+// Delete Journal Entry
   deleteEntry: async (req, res) => {
     try {
       // Find post by id
