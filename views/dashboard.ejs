@@ -6,7 +6,7 @@
 <h4><%= user.userName %>'s Running Journal</p></h4>
 
 <!-- Races -->
-<h5>Your Races:</h5>
+<h5>Races:</h5>
 <table class="table">
   <thead>
     <tr>
@@ -32,24 +32,10 @@
     <% }) %>
     </tbody>
   </table>
-<!-- Add a Race -->
-<form action="/race/createRace" method="POST" class="col s12">
-  <div class="form-row race-entry">
-    <label for="race" class="entry-label">Add a Race:</label>
-    <div class="col-3 race-form">
-      <span>Race:</span><input type="text" id="race" name="race" class="form-control">
-    </div>
-    <div class="col-3 race-form">
-      Race Date:<input type="text" id="raceDate" name="raceDate" class="form-control">
-    </div>
-    <div class="col-3 race-form">
-    <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
-  </div>
-</div>
-</form>
+
 
 <!-- Goals -->
-<h5>Your Goals:</h5>
+<h5>Goals:</h5>
 <table class="table">
   <thead>
     <tr>
@@ -75,20 +61,9 @@
     <% }) %>
     </tbody>
   </table>
-<!-- Add a Goal -->
-<form action="/goal/createGoal" method="POST" class="col s12">
-  <div class="form-row race-entry">
-        <label for="goal" class="entry-label">Add a Goal:</label>
-        <div class="col-3 race-form">
-          <input type="text" id="goal" name="goal" class="form-control">
-      </div>
-      <div class="col-3 race-form">
-  <button type="submit" class="btn btn-primary btn-lg btn-goal" value="Upload">Submit</button>
-  </div></div>
-</form>
 
 <!--If entries add here -->
-<h5>Here are your journal entries:</h5>
+<h5>Journal Entries:</h5>
 <table class="table">
   <thead>
     <tr>

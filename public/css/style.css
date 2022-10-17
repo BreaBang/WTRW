@@ -83,7 +83,12 @@ body{
  .btn-goal{
     margin: 10px 0px 10px 0px;
  }
- 
+ .addBtn{
+    color: white;
+ }
+ .addBtn-Primary{
+    color: #076AE0;
+ }
  /* Forms */
  .form-control{
     font-size: 1.75rem;

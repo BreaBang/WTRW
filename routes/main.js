@@ -19,6 +19,7 @@ router.get("/community", ensureAuth, homeController.getCommunity);
 router.get("/add", ensureAuth, entriesController.getAddPage);
 router.post("/createComment/:id", commentsController.createComment);
 router.get("/:userId", ensureAuth, homeController.getProfile);
+router.get("/buddies", ensureAuth, homeController.getBuddies);
 
 
 

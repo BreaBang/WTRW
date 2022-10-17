@@ -3,29 +3,8 @@
   <section class="side-img-community">
     <img src="/imgs/community-banner.png">
 </section>
-<!-- New -->
 
-<ul class="collapsible friends-collapsible">
-  <li>
-    <div class="collapsible-header"><h1 class="friends-header">Friends (<%= friends.length %>)</h1></div>
-    <div class="collapsible-body">
-        <table class="highlight responsive-table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <% for(let i=0; i < friends.length; i++) {%>
-                    <td><a class="friends-list" href="profile/<%= friends[i]._id %>"><%= friends[i].userName %></a></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
-</ul>
-<!-- Old -->
+<!-- Public Posts - All Users -->
   <div class="row justify-content-center mt-5">
     <ul class="row list-unstyled">
       <% for(var i=0; i<entries.length; i++) {%>
@@ -44,9 +23,6 @@
       </ul>
   </div>
 </div>  
- 
-
-
 
 
 <%- include('partials/footer') -%>

@@ -2,9 +2,12 @@
 <!--Profile Card-->
 <% user.forEach(el => { %>
 <div class="card" style="width: 18rem;" data-name='<%=el.user%>' data-id='<%=el._id%>'>
-    <img class="card-img-top" src="#" alt="Card image cap">
+    <img class="card-img-top" src="<%= user.img %>" alt="Card image cap">
     <div class="card-body">
       <p class="card-text"><%= user.userName%></p>
+      <% if(user.id == userId) {%>
+        <i class="modal-trigger btn blue-grey darken-1 fa fa-plus profile-button" href="#modal1"></i>
+        <% } %>
     </div>
   </div>
   <% }) %>

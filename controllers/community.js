@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const User = require('../models/User')
 
 module.exports = {
@@ -15,7 +17,7 @@ addBuddy: async (req,res) =>{
 removeBuddy: async (req,res) =>{
     try {
         await User.findOneAndUpdate({_id: req.user.id}, 
-            {$pull: {friends: req.params.id}})
+            {$pull: {buddies: req.params.id}})
         console.log('Deleted Buddy')
         res.redirect('/buddies')
     } catch (err) {
