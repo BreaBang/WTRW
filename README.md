@@ -1,4 +1,4 @@
- <img src="https://github.com/BreaBang/100/raw/main/WTRW.gif">
+ <img src="https://github.com/BreaBang/100/raw/main/WTRW1.gif">
  
 # Write to Run Well
 Write to Run Well is a full stack running web application where runners can log their training, races and goals. Users can create public or private journal entries and read public journal entries of other runners. 
